@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MathRiddles</string>
+    <string name="levels">Levels</string>
+    <string name="restart">Restart</string>
+    <string name="exit">Exit</string>
+    <string name="math_riddles">MATH RIDDLES</string>
+    <string name="play">Play</string>
+    <string name="enter">Enter</string>
+    <string name="answer">Answer</string>
+</resources>

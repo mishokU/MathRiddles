@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/start_activity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/tool_bar"/>
+
+    <RelativeLayout
+        android:id="@+id/riddle_place"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/riddle_place"
+        app:layout_constraintBottom_toTopOf="@+id/keyboard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <TextView
+            android:id="@+id/riddle_text"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:textSize="30sp"
+            android:text="riddle" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/keyboard"
+        android:layout_width="0dp"
+        android:orientation="vertical"
+        android:layout_height="180dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/riddle_place"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="1.0">
+
+        <LinearLayout
+            android:id="@+id/first_lay"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <EditText
+                android:id="@+id/input"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:background="@drawable/input_text"
+                android:hint="@string/answer"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:lines="1"
+                android:maxLength="7"
+                android:textAlignment="center"/>
+
+
+            <ImageButton
+                android:id="@+id/erase_from_input"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/erase_text"
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+            <ImageButton
+                android:id="@+id/helpHint"
+                android:layout_width="wrap_content"
+               android:layout_height="50dp"
+               android:layout_marginStart="10dp"
+              android:layout_marginTop="10dp"
+              android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_compass"
+            android:background="@drawable/keyboard_buttons"/>
+
+            <ImageButton
+                android:id="@+id/enter"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:autofillHints="@string/enter"
+                android:background="@drawable/keyboard_buttons"
+                android:src="@android:drawable/ic_menu_send"
+                android:text="@string/enter"
+                android:textAlignment="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/second_lay"
+            android:orientation="horizontal"
+            android:layout_below="@id/first_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/button_1"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:background="@drawable/keyboard_buttons"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:text="1" />
+
+        <Button
+            android:id="@+id/button_2"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/keyboard_buttons"
+            android:text="2" />
+
+        <Button
+            android:id="@+id/button_3"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/keyboard_buttons"
+            android:layout_height="45dp"
+            android:text="3" />
+
+        <Button
+            android:id="@+id/button_4"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/keyboard_buttons"
+            android:layout_height="45dp"
+            android:text="4" />
+
+        <Button
+            android:id="@+id/button_5"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/keyboard_buttons"
+            android:layout_height="45dp"
+            android:text="5" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/third_lay"
+            android:orientation="horizontal"
+            android:layout_below="@id/second_lay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/button_6"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/keyboard_buttons"
+            android:layout_height="45dp"
+            android:text="6" />
+
+        <Button
+            android:id="@+id/button_7"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/keyboard_buttons"
+            android:layout_height="45dp"
+            android:text="7" />
+
+        <Button
+            android:id="@+id/button_8"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:background="@drawable/keyboard_buttons"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+
+            android:text="8" />
+
+        <Button
+            android:id="@+id/button_9"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/keyboard_buttons"
+            android:layout_marginTop="10dp"
+            android:text="9" />
+
+        <Button
+            android:id="@+id/button_0"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_weight="1"
+            android:background="@drawable/keyboard_buttons"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:text="0" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</android.support.constraint.ConstraintLayout>

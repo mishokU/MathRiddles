@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/start_activity"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/app_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:elevation="4dp"
+        android:layout_above="@id/play"
+        android:textColor="@color/white"
+        android:layout_marginBottom="50dp"
+        android:textSize="24sp"
+        android:layout_centerHorizontal="true"
+        android:text="@string/math_riddles" />
+
+    <Button
+        android:id="@+id/play"
+        android:layout_width="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:background="@drawable/main_buttons"
+        android:elevation="10dp"
+        android:layout_above="@id/levels"
+        android:layout_centerHorizontal="true"
+        android:text="@string/play" />
+
+    <Button
+        android:id="@+id/levels"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/white"
+        android:background="@drawable/main_buttons"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/levels" />
+
+    <Button
+        android:id="@+id/restart"
+        android:layout_width="wrap_content"
+        android:textColor="@color/white"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/levels"
+        android:background="@drawable/main_buttons"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/restart" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:textColor="@color/white"
+        android:background="@drawable/main_buttons"
+        android:layout_below="@id/restart"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/exit" />
+
+
+</RelativeLayout>

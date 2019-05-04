@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "784424428446",
+    "firebase_url": "https://mathriddles-c1f85.firebaseio.com",
+    "project_id": "mathriddles-c1f85",
+    "storage_bucket": "mathriddles-c1f85.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784424428446:android:0055d711cfeb3a0c",
+        "android_client_info": {
+          "package_name": "com.example.mathriddles"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "784424428446-snipjn6cveogtn9oeqts5dl8vt21lpr2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mathriddles",
+            "certificate_hash": "981184a8c66ad00900c49dbb0da27460c6a773e5"
+          }
+        },
+        {
+          "client_id": "784424428446-a0qiu9ana50csqnv99pnuu2n2hriuhn4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkV_AED79qXvvw3QdScFHT01HpcoLIybU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "784424428446-a0qiu9ana50csqnv99pnuu2n2hriuhn4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
