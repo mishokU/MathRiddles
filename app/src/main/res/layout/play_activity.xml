@@ -33,7 +33,8 @@
             android:layout_height="wrap_content"
             android:visibility="invisible"
             android:textSize="30sp"
-            android:text="riddle" />
+            android:textAlignment="viewStart"
+            android:text="@string/riddle" />
 
     </RelativeLayout>
 
@@ -65,13 +66,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_weight="1"
+                android:inputType="text"
                 android:background="@drawable/input_text"
                 android:hint="@string/answer"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:lines="1"
                 android:maxLength="7"
-                android:textAlignment="center"/>
+                android:textAlignment="center" />
 
 
             <ImageButton
@@ -80,18 +82,19 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/erase_text"
-                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+                app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+                android:contentDescription="@string/reset" />
 
             <ImageButton
                 android:id="@+id/helpHint"
                 android:layout_width="wrap_content"
-               android:layout_height="50dp"
-               android:layout_marginStart="10dp"
-              android:layout_marginTop="10dp"
-              android:layout_marginEnd="10dp"
-            android:layout_weight="1"
-            app:srcCompat="@android:drawable/ic_menu_compass"
-            android:background="@drawable/keyboard_buttons"/>
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/ic_menu_compass"
+                android:background="@drawable/keyboard_buttons"/>
 
             <ImageButton
                 android:id="@+id/enter"
@@ -100,7 +103,6 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:autofillHints="@string/enter"
                 android:background="@drawable/keyboard_buttons"
                 android:src="@android:drawable/ic_menu_send"
                 android:text="@string/enter"

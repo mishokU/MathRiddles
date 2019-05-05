@@ -1,6 +1,8 @@
 package com.example.mathriddles;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +10,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+    //Shared preferences
+    public static final String APP_PREFERENCES = "levels_count";
+    public SharedPreferences mLevels;
 
     private TextView appName;
     private Button play;
@@ -19,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mLevels = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
         findAllViews();
         setOnActions();
@@ -59,12 +67,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void restartLevels() {
-
+        SharedPreferences.Editor editor = mLevels.edit();
+        editor.putInt("solved_riddles",0);
+        editor.apply();
     }
 
     private void launchActivity(Class activity){
         Intent intent = new Intent(this, activity);
         startActivity(intent);
+        overridePendingTransition(0,0);
     }
 
 }
