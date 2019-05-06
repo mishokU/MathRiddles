@@ -3,6 +3,7 @@ package com.example.mathriddles;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import static com.example.mathriddles.MainActivity.APP_PREFERENCES;
 public class LevelsActivity extends AppCompatActivity implements View.OnClickListener {
 
     private SharedPreferences mLevels;
+    private MediaPlayer button_sound;
 
     private int complete_buttons = 0;
     private final int countButtons = 11;
@@ -31,6 +33,8 @@ public class LevelsActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.levels_activity);
+
+        button_sound = MediaPlayer.create(this, R.raw.button_click);
 
         mLevels = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
 
@@ -76,6 +80,9 @@ public class LevelsActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
+
+        button_sound.start();
+
         for(Button level : levels){
             if(level == v) {
                 launchActivity(((Button)v).getText().toString());

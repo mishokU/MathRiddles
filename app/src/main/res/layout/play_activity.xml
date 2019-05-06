@@ -2,7 +2,6 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/start_activity">
@@ -19,6 +18,7 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="8dp"
+        android:elevation="1dp"
         android:background="@drawable/riddle_place"
         app:layout_constraintBottom_toTopOf="@+id/keyboard"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,12 +26,24 @@
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TextView
+            android:id="@+id/hint_text"
+            android:hint="First munis secondd"
+            android:layout_alignParentBottom="true"
+            android:textColor="@color/hint_color"
+            android:layout_marginBottom="20dp"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"/>
+
+        <TextView
             android:id="@+id/riddle_text"
             android:layout_width="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_height="wrap_content"
-            android:visibility="invisible"
             android:textSize="30sp"
             android:textAlignment="viewStart"
             android:text="@string/riddle" />

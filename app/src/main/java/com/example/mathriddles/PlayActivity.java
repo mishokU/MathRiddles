@@ -6,12 +6,15 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +27,8 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
 
     public SharedPreferences mLevels;
     private MediaPlayer mp;
+    private MediaPlayer solve_sound;
+    private MediaPlayer mistake_sound;
 
     private TextView riddle_text;
     private Toolbar toolbar;
@@ -32,10 +37,14 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton enter;
     private ImageButton erase_from_input;
     private ImageButton helpHint;
+    private TextView hint_text;
 
     private final int solvedRiddles = 11;
+    private final int totalButtons = 9;
+
     private String[] riddles;
     private String[] answers;
+    private String[] hints;
     private int countOfRiddles = 0;
 
     @Override
@@ -44,6 +53,8 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.play_activity);
 
         mp = MediaPlayer.create(this, R.raw.button_click);
+        solve_sound = MediaPlayer.create(this, R.raw.solve);
+        mistake_sound = MediaPlayer.create(this,R.raw.mistake);
 
         getSolvedRiddles();
         findAllViews();
@@ -73,12 +84,12 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         enter = findViewById(R.id.enter);
         helpHint = findViewById(R.id.helpHint);
         erase_from_input = findViewById(R.id.erase_from_input);
+        hint_text = findViewById(R.id.hint_text);
 
         input = findViewById(R.id.input);
         input.setFocusable(false);
         input.setClickable(false);
     }
-
 
     private void getLevel() {
         Bundle bundle = getIntent().getExtras();
@@ -90,19 +101,20 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     private void getRiddlesFromArray() {
         riddles = getResources().getStringArray(R.array.array_of_riddles);
         answers = getResources().getStringArray(R.array.answers_to_riddles);
+        hints = getResources().getStringArray(R.array.hints_to_riddles);
     }
 
     private void setLevel() {
-        toolbar.setTitle("Level " + countOfRiddles);
+        getSupportActionBar().setTitle("Level " + (countOfRiddles + 1));
         riddle_text.setText(riddles[countOfRiddles]);
-        riddle_text.setVisibility(View.VISIBLE);
     }
 
     private void setOnActions() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Level " + (countOfRiddles + 1));
 
-        for(int i = 0; i <= 9; i++){
+        for(int i = 0; i <= totalButtons; i++){
             String buttonID = "button_" + i;
             int resId = getResources().getIdentifier(buttonID,"id",getPackageName());
             Button button = findViewById(resId);
@@ -110,13 +122,18 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
             keybuttons.add(button);
         }
 
+        helpHint.setOnClickListener(this);
         enter.setOnClickListener(this);
         erase_from_input.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
+
         mp.start();
+
+        hint_text.setVisibility(View.INVISIBLE);
+
         for(Button button : keybuttons){
             if(button == v) {
                 CharSequence charSequence = input.getText() + ((Button)v).getText().toString();
@@ -128,27 +145,40 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
             input.setText("");
         }
 
+        if(v == helpHint){
+            showHint();
+        }
+
         if(v == enter) {
             if(input.getText().toString().equals(answers[countOfRiddles])){
-
-                input.setText("");
-
-                countOfRiddles++;
-
-                SharedPreferences.Editor editor = mLevels.edit();
-                editor.putInt("solved_riddles", countOfRiddles);
-                editor.apply();
-
-                if(countOfRiddles >= riddles.length){
-                    launchActivity(WinScreen.class);
-                } else {
-                    setLevel();
-                }
-
+                solve_sound.start();
+                getNextLevel();
             } else {
-                Toast.makeText(getApplicationContext(), "Try again!", Toast.LENGTH_LONG).show();
+                mistake_sound.start();
             }
         }
+    }
+
+    private void getNextLevel() {
+        input.setText("");
+
+        countOfRiddles++;
+
+        SharedPreferences.Editor editor = mLevels.edit();
+        editor.putInt("solved_riddles", countOfRiddles);
+        editor.apply();
+
+        if(countOfRiddles >= riddles.length){
+            launchActivity(WinScreen.class);
+        } else {
+            setLevel();
+        }
+    }
+
+
+    private void showHint() {
+        hint_text.setText(hints[countOfRiddles]);
+        hint_text.setVisibility(View.VISIBLE);
     }
 
     @Override

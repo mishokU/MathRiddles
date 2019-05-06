@@ -4,9 +4,11 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="start_activity">#545866</color>
-    <color name="app_name">#E0BE27</color>
+    <color name="app_name">#E6CA83</color>
     <color name="complete_level">#7D51C4</color>
     <color name="white">#FFFFFF</color>
     <color name="riddle_place">#3A3C47</color>
     <color name="black">#3A3C47</color>
+    <color name="riddle_stroke">#DFB93D</color>
+    <color name="hint_color">#80C4B08B</color>
 </resources>

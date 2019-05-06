@@ -43,5 +43,19 @@
         <item>90</item>
     </string-array>
 
+    <string-array name="hints_to_riddles">
+        <item>Multiply on two</item>
+        <item>Divide on five</item>
+        <item>Just think</item>
+        <item>Multiply on two</item>
+        <item>Divide on five</item>
+        <item>Just think</item>
+        <item>Multiply on two</item>
+        <item>Divide on five</item>
+        <item>Just think</item>
+        <item>Multiply on two</item>
+        <item>Divide on five</item>
+        <item>Just think</item>
+    </string-array>
 
 </resources>

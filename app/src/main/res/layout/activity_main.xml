@@ -14,58 +14,115 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:elevation="4dp"
-        android:layout_above="@id/play"
+        android:layout_above="@id/play_lin"
         android:textColor="@color/white"
         android:layout_marginBottom="50dp"
         android:textSize="24sp"
         android:layout_centerHorizontal="true"
         android:text="@string/math_riddles" />
 
-    <Button
-        android:id="@+id/play"
-        android:layout_width="wrap_content"
-        android:layout_centerVertical="true"
-        android:textColor="@color/white"
-        android:layout_height="wrap_content"
-        android:background="@drawable/main_buttons"
-        android:elevation="10dp"
-        android:layout_above="@id/levels"
+    <LinearLayout
+        android:id="@+id/play_lin"
+        android:layout_above="@id/levels_lin"
         android:layout_centerHorizontal="true"
-        android:text="@string/play" />
-
-    <Button
-        android:id="@+id/levels"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textColor="@color/white"
-        android:background="@drawable/main_buttons"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/levels" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/restart"
+        <ImageView
+            android:id="@+id/play_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/image_main"
+            app:srcCompat="@android:drawable/ic_media_play" />
+
+        <Button
+            android:id="@+id/play"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"
+            android:background="@drawable/main_buttons"
+            android:elevation="10dp"
+            android:textSize="24sp"
+            android:text="@string/play" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/levels_lin"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
-        android:textColor="@color/white"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/levels"
-        android:background="@drawable/main_buttons"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/restart" />
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/exit"
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/image_main"
+            app:srcCompat="@android:drawable/ic_menu_today" />
+
+        <Button
+            android:id="@+id/levels"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:background="@drawable/main_buttons"
+            android:text="@string/levels" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/restart_lin"
+        android:layout_below="@id/levels_lin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:textColor="@color/white"
-        android:background="@drawable/main_buttons"
-        android:layout_below="@id/restart"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/exit" />
+        android:layout_height="wrap_content">
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/image_main"
+            app:srcCompat="@android:drawable/ic_menu_rotate" />
+
+        <Button
+            android:id="@+id/restart"
+            android:layout_width="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/main_buttons"
+            android:text="@string/restart" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/restart_lin"
+        android:id="@+id/exit_lin"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/image_main"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
+        <Button
+            android:id="@+id/exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:background="@drawable/main_buttons"
+            android:text="@string/exit" />
+
+    </LinearLayout>
 
 </RelativeLayout>
