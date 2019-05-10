@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/start_activity">
@@ -10,43 +11,107 @@
         android:id="@+id/toolbar"
         layout="@layout/tool_bar"/>
 
-    <RelativeLayout
-        android:id="@+id/riddle_place"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <TextView
+        android:id="@+id/score_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="100"
+        app:layout_constraintBottom_toTopOf="@+id/riddle_place"
+        app:layout_constraintEnd_toEndOf="@+id/timer_score"
+        app:layout_constraintStart_toStartOf="@+id/timer_score"
+        app:layout_constraintTop_toTopOf="@+id/timer_score"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:id="@+id/timer_score"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="8dp"
-        android:elevation="1dp"
-        android:background="@drawable/riddle_place"
-        app:layout_constraintBottom_toTopOf="@+id/keyboard"
+        android:background="@drawable/time_out"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
         <TextView
-            android:id="@+id/hint_text"
-            android:hint="First munis secondd"
-            android:layout_alignParentBottom="true"
-            android:textColor="@color/hint_color"
-            android:layout_marginBottom="20dp"
+            android:id="@+id/timer"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:background="@drawable/current_time"
+            android:text="Time"
             android:textAlignment="center"
-            android:textSize="20sp"
-            android:layout_centerHorizontal="true"
+            android:textColor="@color/riddle_place" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/riddle_place"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/riddle_place"
+        android:elevation="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/keyboard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timer_score">
+
+        <TextView
+            android:id="@+id/hint_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="invisible"/>
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:hint=""
+            android:textAlignment="center"
+            android:textColor="@color/hint_color"
+            android:textSize="20sp"
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/riddle_text"
             android:layout_width="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
             android:layout_height="wrap_content"
-            android:textSize="30sp"
+            android:layout_centerInParent="true"
+            android:text="@string/riddle"
             android:textAlignment="viewStart"
-            android:text="@string/riddle" />
+            android:textSize="26sp" />
+
+        <RelativeLayout
+            android:id="@+id/next_level_place"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="invisible"
+            android:layout_centerInParent="true"
+            android:background="@drawable/correct_answer">
+
+            <TextView
+                android:id="@+id/this_level_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/next_level_button"
+                android:layout_centerHorizontal="true"
+                android:text="This level score is 100"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <Button
+                android:id="@+id/next_level_button"
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/riddle_place"
+                android:text="@string/next_level" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
@@ -246,4 +311,4 @@
     </RelativeLayout>
 
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

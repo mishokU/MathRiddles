@@ -5,14 +5,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +22,7 @@ public class LevelsActivity extends AppCompatActivity implements View.OnClickLis
     private MediaPlayer button_sound;
 
     private int complete_buttons = 0;
-    private final int countButtons = 11;
+    private final int countButtons = 15;
     private Toolbar toolbar;
     private List<Button> levels = new ArrayList<>();
 

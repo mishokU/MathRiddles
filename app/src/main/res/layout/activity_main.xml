@@ -8,18 +8,10 @@
     android:background="@color/start_activity"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/app_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:elevation="4dp"
-        android:layout_above="@id/play_lin"
-        android:textColor="@color/white"
-        android:layout_marginBottom="50dp"
-        android:textSize="24sp"
-        android:layout_centerHorizontal="true"
-        android:text="@string/math_riddles" />
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/tool_bar">
+    </include>
 
     <LinearLayout
         android:id="@+id/play_lin"

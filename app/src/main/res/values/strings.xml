@@ -8,54 +8,38 @@
     <string name="enter">Enter</string>
     <string name="answer">Answer</string>
     <string name="level_1">4,8,16,?:32</string>
-    <string name="congratulations_nyou_complete_all_levels">CONGRATULATIONS You complete all levels!</string>
+    <string name="congratulations_nyou_complete_all_levels">CONGRATULATIONS\n You complete all levels!</string>
     <string name="reset">RESET</string>
     <string name="return_to_main">RETURN</string>
     <string name="riddle">riddle</string>
+    <string name="score_100">SCORE: 100</string>
+    <string name="next_level">NEXT LEVEL</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="sign_in">Sign In</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="profile">profile</string>
+    <string name="leader_board">leader board</string>
+    <string name="settings">Settings</string>
 
-    <string-array name="array_of_riddles">
-        <item>4, 8, 16, ?</item>
-        <item>6 = 30\n3 = 15\n7 = 35\n2 = ?</item>
-        <item>2 + 2 * 2 = ?</item>
-        <item>4, 11, 18, ?</item>
-        <item>5 + 5 * 5 – 5 = ?</item>
-        <item>A + B = 60\nA &#8211; B = 40\nA / B = ?</item>
-        <item>13, 18 = 31\n&#160;&#160;7, 25 = 32\n12, 30 = 42\n26, 13 = ? </item>
-        <item>8 – 8 / 4 * 3 = ?</item>
-        <item>11, 15, 20, ?</item>
-        <item>&#160;&#160;4, 8 = 32\n&#160;&#160;5, 3 = 15\n10, 2 = 20\n&#160;&#160;8, 6 = ?</item>
-        <item>3, 5 = 34\n8, 2 = 68\n4, 6 = 52\n5, 1 = ?</item>
-        <item>8 = 72\n2 = 6\n5 = 30\n9 = ?</item>
-    </string-array>
 
-    <string-array name="answers_to_riddles">
-        <item>32</item>
-        <item>10</item>
-        <item>6</item>
-        <item>25</item>
-        <item>25</item>
-        <item>5</item>
-        <item>39</item>
-        <item>2</item>
-        <item>26</item>
-        <item>48</item>
-        <item>26</item>
-        <item>90</item>
-    </string-array>
-
-    <string-array name="hints_to_riddles">
-        <item>Multiply on two</item>
-        <item>Divide on five</item>
-        <item>Just think</item>
-        <item>Multiply on two</item>
-        <item>Divide on five</item>
-        <item>Just think</item>
-        <item>Multiply on two</item>
-        <item>Divide on five</item>
-        <item>Just think</item>
-        <item>Multiply on two</item>
-        <item>Divide on five</item>
-        <item>Just think</item>
+    <string-array name="riddles">
+        <item>4, 8, 16, ?:32:Multiply on two</item>
+        <item>6 = 30\n3 = 15\n7 = 35\n2 = ?:10:Divide on five</item>
+        <item>2 + 2 * 2 = ?:6:Just think</item>
+        <item>4, 11, 18, ?:25:</item>
+        <item>5 + 5 * 5 – 5 = ?:25</item>
+        <item>A + B = 60\nA &#8211; B = 40\nA / B = ?:5:</item>
+        <item>13, 18 = 31\n&#160;&#160;7, 25 = 32\n12, 30 = 42\n26, 13 = ?:39 </item>
+        <item>8 – 8 / 4 * 3 = ?:2</item>
+        <item>11, 15, 20, ?:26</item>
+        <item>&#160;&#160;4, 8 = 32\n&#160;&#160;5, 3 = 15\n10, 2 = 20\n&#160;&#160;8, 6 = ?:48</item>
+        <item>3, 5 = 34\n8, 2 = 68\n4, 6 = 52\n5, 1 = ?:26</item>
+        <item>8 = 72\n2 = 6\n5 = 30\n9 = ?:90</item>
+        <item>(3^2 – 2^3)^66 = ?:1</item>
+        <item>1^5 + 5^2 / 25^0 – 5^1 = ?:21</item>
+        <item>1783, 3178, 8317, ?:7831</item>
+        <item>83 = 40\n27 = 12\n19 = 8\n91 = ?:44</item>
     </string-array>
 
 </resources>
