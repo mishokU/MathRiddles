@@ -1,4 +1,4 @@
-package com.example.mathriddles;
+    package com.example.mathriddles;
 
 import android.os.Bundle;
 import android.widget.LinearLayout;
@@ -15,7 +15,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.Iterator;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Map;
 
 import butterknife.BindView;
@@ -26,6 +29,8 @@ public class LeaderBoardActivity extends AppCompatActivity {
     @BindView(R.id.scrollView) public ScrollView scrollView;
     @BindView(R.id.mainTape) public LinearLayout mainTape;
     @BindView(R.id.toolbar) public Toolbar toolbar;
+
+    private List<LeaderBoardItem> mLeaderBoardItems = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -78,11 +83,27 @@ public class LeaderBoardActivity extends AppCompatActivity {
             Map singleUser = (Map) entry.getValue();
 
             LeaderBoardItem leaderBoardItem = new LeaderBoardItem(this);
-            leaderBoardItem.setItemIndex(String.valueOf(mainTape.getChildCount()));
-            leaderBoardItem.setUserItemName(singleUser.get("user").toString());
-            leaderBoardItem.setItemScore(singleUser.get("score").toString());
+            leaderBoardItem.setUserItemViewName(singleUser.get("user").toString());
+            leaderBoardItem.setItemViewScore(singleUser.get("score").toString());
 
-            mainTape.addView(leaderBoardItem.getItemView(),0);
+            mLeaderBoardItems.add(leaderBoardItem);
+        }
+
+        setMainTape();
+    }
+
+    private void setMainTape() {
+        Collections.sort(mLeaderBoardItems, new Comparator<LeaderBoardItem>() {
+            @Override
+            public int compare(LeaderBoardItem o1, LeaderBoardItem o2) {
+                return o1.getScore() > o2.getScore() ? o1.getScore() : o2.getScore();
+            }
+        });
+
+        for(int i = 0; i < mLeaderBoardItems.size(); i++){
+            mLeaderBoardItems.get(i).setItemViewIndex(String.valueOf(i+1));
+            mainTape.addView(mLeaderBoardItems.get(i).getItemView());
         }
     }
+
 }

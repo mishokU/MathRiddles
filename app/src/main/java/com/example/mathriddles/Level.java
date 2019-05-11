@@ -60,7 +60,7 @@ public class Level extends Riddle {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                active_view.setText("" + score);
+                active_view.setText("Time " + score);
             }
         });
     }

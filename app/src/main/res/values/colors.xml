@@ -14,4 +14,5 @@
     <color name="hint_color">#80C4B08B</color>
     <color name="correct_answer">#4BF527</color>
     <color name="wrong_answer">#EE2C56</color>
+    <color name="icon_color">#845ACF</color>
 </resources>

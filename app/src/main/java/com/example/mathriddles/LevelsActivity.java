@@ -53,12 +53,9 @@ public class LevelsActivity extends AppCompatActivity implements View.OnClickLis
             String buttonID = "button_" + i;
             int resId = getResources().getIdentifier(buttonID,"id",getPackageName());
             Button button = findViewById(resId);
-
-            if(i < complete_buttons) {
-                button.setBackgroundResource(R.drawable.complete_level);
-                button.setOnClickListener(this);
-                levels.add(button);
-            }
+             button.setBackgroundResource(R.drawable.complete_level);
+             button.setOnClickListener(this);
+             levels.add(button);
         }
     }
 
@@ -90,7 +87,7 @@ public class LevelsActivity extends AppCompatActivity implements View.OnClickLis
 
     private void launchActivity(String level) {
         Intent intent = new Intent(this, PlayActivity.class);
-        intent.putExtra("level", level);
+        intent.putExtra("level", Integer.parseInt(level)-1);
         startActivity(intent);
         finish();
         overridePendingTransition(0,0);

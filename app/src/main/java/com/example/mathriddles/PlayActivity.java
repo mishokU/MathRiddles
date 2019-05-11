@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,7 +20,14 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +36,11 @@ import static com.example.mathriddles.MainActivity.APP_PREFERENCES;
 
 public class PlayActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private DatabaseReference databaseReference;
+    //Firebase
+    private DatabaseReference mDatabaseReference;
+    private FirebaseAuth mAuth;
+    private FirebaseUser mFUser;
+    private String mUserScore;
 
     //Key buttons elements
     private List<Button> keybuttons = new ArrayList<>();
@@ -57,7 +69,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     private Animation timer_animation;
 
     private int score = 100;
-
+    private SharedPreferences mLevels;
     private Sounds sounds;
 
     @Override
@@ -68,6 +80,22 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
         sounds = new Sounds(this);
         timer_animation = AnimationUtils.loadAnimation(this, R.anim.time_animation);
 
+        mFUser = FirebaseAuth.getInstance().getCurrentUser();
+        String user_id = mFUser.getUid();
+
+        //Get current score from data base
+        mDatabaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(user_id);
+        mDatabaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                mUserScore = dataSnapshot.child("score").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         findAllViews();
 
@@ -122,10 +150,14 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void getCurrentLevelIndex() {
-        SharedPreferences mLevels = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
+        mLevels = getSharedPreferences(APP_PREFERENCES, Context.MODE_PRIVATE);
         if(mLevels.contains("solved_riddles")){
             //Get number of solved riddles to get index in riddle list
             index = mLevels.getInt("solved_riddles",0);
+        }
+        Bundle bundle = getIntent().getExtras();
+        if(bundle != null){
+            index = bundle.getInt("level");
         }
     }
 
@@ -190,6 +222,7 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
             if (index >= textLevels.length) {
                 launchActivity(WinScreen.class);
             } else {
+                sounds.getSolveSound();
                 //Set empty input field
                 input.setText("");
                 riddle_place.setBackgroundResource(R.drawable.correct_answer);
@@ -200,10 +233,29 @@ public class PlayActivity extends AppCompatActivity implements View.OnClickListe
                 //Show level score
                 next_level_place.setVisibility(View.VISIBLE);
                 current_level_score.setText("This level score is " + level.getScore());
+
+                rememberLevelToSharedPref();
+                setScoreToServer();
             }
         } else {
             riddle_place.setBackgroundResource(R.drawable.wrong_answer);
+            input.setText("");
         }
+    }
+
+    private void rememberLevelToSharedPref() {
+        if(mLevels.contains("solved_riddles")){
+            SharedPreferences.Editor editor = mLevels.edit();
+            editor.putInt("solved_riddles",index);
+            editor.apply();
+        }
+    }
+
+    private void setScoreToServer() {
+        int tmp_score = Integer.parseInt(mUserScore);
+        tmp_score += level.getScore();
+
+        mDatabaseReference.child("score").setValue(String.valueOf(tmp_score));
     }
 
     @Override

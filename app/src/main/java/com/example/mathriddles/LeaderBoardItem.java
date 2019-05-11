@@ -31,19 +31,27 @@ public class LeaderBoardItem extends View {
         return view;
     }
 
+    public int getScore(){
+        return Integer.parseInt(itemScore.getText().toString());
+    }
+
+    public int getIndex(){
+        return Integer.parseInt(itemIndex.getText().toString());
+    }
+
     public void setItemView(){
         view = View.inflate(getContext(), R.layout.leader_board_item,null);
     }
 
-    public void setItemIndex(String index){
+    public void setItemViewIndex(String index) {
         itemIndex.setText(index);
     }
 
-    public void setItemScore(String score){
+    public void setItemViewScore(String score){
         itemScore.setText(score);
     }
 
-    public void setUserItemName(String user_name){
+    public void setUserItemViewName(String user_name){
         userItemName.setText(user_name);
     }
 }

@@ -68,10 +68,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onStart();
         //Get id current user
         FirebaseUser current_user = mAuth.getCurrentUser();
-        //System.out.println("current_user" + current_user.getEmail());
         //If there is no such user start sign in activity
         if(current_user == null){
-            System.out.println("Hi");
             launchActivity(SignInActivity.class);
         }
     }
