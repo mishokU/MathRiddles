@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -30,6 +32,8 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.password_field) public EditText mPassword;
     @BindView(R.id.sign_in_button) public Button mSignInButton;
     @BindView(R.id.to_register) public Button mToRegister;
+    @BindView(R.id.user_field_animation) public EditText mUserAnim;
+
     //Firebase
     private FirebaseAuth mAuth;
 
@@ -43,6 +47,29 @@ public class SignInActivity extends AppCompatActivity implements View.OnClickLis
 
         mSignInButton.setOnClickListener(this);
         mToRegister.setOnClickListener(this);
+
+        startAnimation();
+    }
+
+    private void startAnimation() {
+        Animation drop_up = AnimationUtils.loadAnimation(this,R.anim.drop_up_name);
+        mUserAnim.setAnimation(drop_up);
+        mUserAnim.getAnimation().setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                mUserAnim.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
     @Override

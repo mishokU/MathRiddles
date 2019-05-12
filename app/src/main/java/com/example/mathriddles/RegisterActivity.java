@@ -8,8 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -25,7 +28,6 @@ import java.util.HashMap;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -35,6 +37,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     @BindView(R.id.email_field) public EditText mEmail;
     @BindView(R.id.password_field) public EditText mPassword;
     @BindView(R.id.user_field) public EditText mUser;
+    @BindView(R.id.user_field_animation) public EditText mUserAnimation;
+    @BindView(R.id.name_anim) public LinearLayout linearLayout;
 
     //Firebase
     private FirebaseAuth mAuth;
@@ -50,6 +54,30 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         mRegisterButton.setOnClickListener(this);
         mToSignIn.setOnClickListener(this);
+
+        startAnimation();
+    }
+
+    private void startAnimation() {
+        Animation drop_down = AnimationUtils.loadAnimation(this,R.anim.drop_down_name);
+        mUserAnimation.startAnimation(drop_down);
+        mUserAnimation.getAnimation().setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                mUser.setVisibility(View.VISIBLE);
+                linearLayout.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
     @Override

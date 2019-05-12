@@ -7,6 +7,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <LinearLayout
+        android:id="@+id/name_anim"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/email_field"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/user_field_animation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Name"
+            android:inputType="textPersonName" />
+
+    </LinearLayout>
+
     <Button
         android:id="@+id/to_sign_in"
         android:layout_width="match_parent"
@@ -24,6 +42,17 @@
         android:layout_below="@id/password_field"
         android:background="@drawable/riddle_place"
         android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/user_field"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@id/email_field"
+        android:visibility="invisible"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/email_field"
@@ -45,16 +74,5 @@
         android:hint="@string/password"
         android:ems="10"
         android:inputType="textPassword"/>
-
-    <EditText
-        android:id="@+id/user_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:layout_above="@id/email_field"
-        android:layout_centerHorizontal="true"
-        android:hint="Name" />
-
 
 </RelativeLayout>

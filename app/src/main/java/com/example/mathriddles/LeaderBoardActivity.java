@@ -30,7 +30,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
     @BindView(R.id.mainTape) public LinearLayout mainTape;
     @BindView(R.id.toolbar) public Toolbar toolbar;
 
-    private List<LeaderBoardItem> mLeaderBoardItems = new ArrayList<>();
+    private ArrayList<LeaderBoardItem> mLeaderBoardItems = new ArrayList<>();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -83,22 +83,19 @@ public class LeaderBoardActivity extends AppCompatActivity {
             Map singleUser = (Map) entry.getValue();
 
             LeaderBoardItem leaderBoardItem = new LeaderBoardItem(this);
+
             leaderBoardItem.setUserItemViewName(singleUser.get("user").toString());
             leaderBoardItem.setItemViewScore(singleUser.get("score").toString());
 
             mLeaderBoardItems.add(leaderBoardItem);
+            System.out.println("name: " + leaderBoardItem.getName());
         }
 
         setMainTape();
     }
 
     private void setMainTape() {
-        Collections.sort(mLeaderBoardItems, new Comparator<LeaderBoardItem>() {
-            @Override
-            public int compare(LeaderBoardItem o1, LeaderBoardItem o2) {
-                return o1.getScore() > o2.getScore() ? o1.getScore() : o2.getScore();
-            }
-        });
+        sortList();
 
         for(int i = 0; i < mLeaderBoardItems.size(); i++){
             mLeaderBoardItems.get(i).setItemViewIndex(String.valueOf(i+1));
@@ -106,4 +103,9 @@ public class LeaderBoardActivity extends AppCompatActivity {
         }
     }
 
+    private void sortList() {
+        Collections.sort(mLeaderBoardItems);
+
+        for(LeaderBoardItem item : mLeaderBoardItems) System.out.println("score: " + item.getScore());
+    }
 }

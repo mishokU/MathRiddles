@@ -16,7 +16,7 @@
         android:gravity="center"
         android:textSize="24sp"
         android:textAlignment="gravity"
-        android:text="Full score is: 4000"
+        android:text="Full score is "
         android:layout_centerHorizontal="true"
         android:background="@drawable/riddle_place"
         android:layout_marginTop="50dp"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="Save"
         android:layout_marginTop="20dp"
-        android:layout_below="@id/password_field"
+        android:layout_below="@id/email_field"
         android:background="@drawable/riddle_place"
         android:layout_centerHorizontal="true"/>
 
@@ -41,16 +41,6 @@
         android:layout_centerHorizontal="true"
         android:inputType="textEmailAddress"
         android:hint="@string/email"/>
-
-    <EditText
-        android:id="@+id/password_field"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/email_field"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/password"
-        android:ems="10"
-        android:inputType="textPassword"/>
 
     <EditText
         android:id="@+id/user_field"

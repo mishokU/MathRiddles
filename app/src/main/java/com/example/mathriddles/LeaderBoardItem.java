@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 
-public class LeaderBoardItem extends View {
+public class LeaderBoardItem extends View implements Comparable<LeaderBoardItem> {
 
     private View view;
     private TextView itemIndex;
@@ -32,16 +32,17 @@ public class LeaderBoardItem extends View {
     }
 
     public int getScore(){
-        return Integer.parseInt(itemScore.getText().toString());
+            int score = Integer.parseInt(itemScore.getText().toString());
+            return score;
     }
 
     public int getIndex(){
         return Integer.parseInt(itemIndex.getText().toString());
     }
 
-    public void setItemView(){
-        view = View.inflate(getContext(), R.layout.leader_board_item,null);
-    }
+    public String getName(){ return userItemName.getText().toString(); }
+
+    public void setItemView(){ view = View.inflate(getContext(), R.layout.leader_board_item,null); }
 
     public void setItemViewIndex(String index) {
         itemIndex.setText(index);
@@ -53,5 +54,10 @@ public class LeaderBoardItem extends View {
 
     public void setUserItemViewName(String user_name){
         userItemName.setText(user_name);
+    }
+
+    @Override
+    public int compareTo(LeaderBoardItem o) {
+        return getScore() > o.getScore() ? getScore() : o.getScore();
     }
 }

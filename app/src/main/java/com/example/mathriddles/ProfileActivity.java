@@ -29,7 +29,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     @NotNull
     @BindView(R.id.email_field) public EditText mEmail;
-    @BindView(R.id.password_field) public EditText mPassword;
     @BindView(R.id.user_field) public EditText mUser;
     @BindView(R.id.full_score) public TextView mFullScore;
     @BindView(R.id.toolbar) public Toolbar toolbar;
